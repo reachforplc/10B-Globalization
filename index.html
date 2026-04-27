@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10B: Globalization — Vocabulary</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue-50: #E6F1FB; --blue-100: #B5D4F4; --blue-600: #185FA5; --blue-800: #0C447C;
+  --green-50: #EAF3DE; --green-100: #C0DD97; --green-600: #3B6D11; --green-800: #27500A;
+  --amber-50: #FAEEDA; --amber-100: #FAC775; --amber-600: #854F0B; --amber-800: #633806;
+  --purple-50: #EEEDFE; --purple-100: #CECBF6; --purple-600: #534AB7; --purple-800: #3C3489;
+  --coral-50: #FAECE7; --coral-100: #F5C4B3; --coral-600: #993C1D; --coral-800: #712B13;
+  --gray-50: #F5F4F0; --gray-100: #ECEAE3; --gray-200: #D3D1C7; --gray-600: #5F5E5A; --gray-800: #2C2C2A;
+}
+
+body { font-family: 'DM Sans', sans-serif; background: #F5F4F0; color: #2C2C2A; min-height: 100vh; }
+
+/* ── WELCOME ── */
+#welcomeScreen { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; background: #2C2C2A; }
+.welcome-card { background: #F5F4F0; border-radius: 16px; padding: 44px 38px; max-width: 540px; width: 100%; text-align: center; }
+.welcome-card h1 { font-family: 'DM Serif Display', serif; font-size: 26px; font-weight: 400; margin-bottom: 4px; }
+.welcome-unit { font-size: 13px; color: #888780; margin-bottom: 6px; }
+.welcome-topic { display: inline-block; background: #E6F1FB; color: #0C447C; font-size: 13px; font-weight: 600; padding: 4px 14px; border-radius: 100px; margin-bottom: 26px; }
+.welcome-steps { text-align: left; background: white; border: 1px solid #D3D1C7; border-radius: 10px; padding: 14px 18px; margin-bottom: 26px; display: flex; flex-direction: column; gap: 10px; }
+.ws { display: flex; align-items: center; gap: 12px; font-size: 13px; color: #5F5E5A; }
+.wsn { width: 26px; height: 26px; border-radius: 50%; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.wsn-1 { background: #EEEDFE; color: #3C3489; } .wsn-2 { background: #E6F1FB; color: #0C447C; }
+.wsn-3 { background: #FAEEDA; color: #633806; } .wsn-4 { background: #EAF3DE; color: #27500A; }
+.wsn-5 { background: #FAECE7; color: #712B13; }
+.name-label { display: block; font-size: 13px; font-weight: 600; color: #5F5E5A; margin-bottom: 7px; text-align: left; }
+.name-row { display: flex; gap: 8px; }
+.name-row input { flex: 1; padding: 11px 14px; border-radius: 8px; border: 1.5px solid #D3D1C7; font-size: 15px; font-family: 'DM Sans', sans-serif; background: white; }
+.name-row input:focus { outline: none; border-color: #185FA5; }
+.err { font-size: 12px; color: #993C1D; margin-top: 6px; text-align: left; display: none; }
+.saved-note { font-size: 12px; color: #3B6D11; margin-top: 8px; text-align: left; }
+.restore-section { margin-top: 18px; padding-top: 16px; border-top: 1px solid #D3D1C7; }
+.restore-toggle { font-size: 13px; color: #185FA5; cursor: pointer; background: none; border: none; font-family: 'DM Sans', sans-serif; text-decoration: underline; }
+.restore-area { display: none; margin-top: 10px; }
+.restore-area textarea { width: 100%; padding: 10px 12px; border-radius: 8px; border: 1.5px solid #D3D1C7; font-size: 12px; font-family: monospace; resize: vertical; min-height: 56px; background: white; }
+
+/* ── HEADER ── */
+header { background: #2C2C2A; color: #F5F4F0; padding: 13px 24px; display: flex; align-items: center; justify-content: space-between; gap: 12px; position: sticky; top: 0; z-index: 100; flex-wrap: wrap; }
+.hd-left h1 { font-family: 'DM Serif Display', serif; font-size: 17px; font-weight: 400; }
+.hd-left p { font-size: 11px; color: #B4B2A9; margin-top: 1px; }
+.hd-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.student-chip { background: #3a3a38; border: 1px solid #555553; border-radius: 100px; padding: 4px 13px; font-size: 12px; color: #D3D1C7; }
+.student-chip span { color: #F5F4F0; font-weight: 500; }
+
+.progress-nav { display: flex; gap: 3px; align-items: center; }
+.progress-step { display: flex; align-items: center; gap: 3px; }
+.step-circle { width: 23px; height: 23px; border-radius: 50%; border: 1.5px solid #444441; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; color: #888780; flex-shrink: 0; }
+.step-circle.done { background: #3B6D11; border-color: #3B6D11; color: white; }
+.step-circle.active { background: #F5F4F0; border-color: #F5F4F0; color: #2C2C2A; }
+.step-label { display: none; font-size: 10px; color: #888780; }
+.step-line { width: 10px; height: 1.5px; background: #444441; }
+@media (min-width: 860px) { .step-label { display: inline; } }
+
+/* ── MODAL ── */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; align-items: center; justify-content: center; padding: 20px; }
+.modal-overlay.open { display: flex; }
+.modal-box { background: white; border-radius: 14px; padding: 26px; max-width: 460px; width: 100%; position: relative; }
+.modal-box h3 { font-size: 16px; font-weight: 600; margin-bottom: 5px; }
+.modal-box p { font-size: 13px; color: #5F5E5A; line-height: 1.6; margin-bottom: 12px; }
+.save-code-box { background: #F5F4F0; border: 1px solid #D3D1C7; border-radius: 8px; padding: 10px 12px; font-family: monospace; font-size: 11px; word-break: break-all; line-height: 1.6; margin-bottom: 12px; user-select: all; }
+.modal-close { position: absolute; top: 12px; right: 14px; background: none; border: none; font-size: 19px; cursor: pointer; color: #888780; }
+
+/* ── MAIN ── */
+#appShell { display: none; }
+main { max-width: 980px; margin: 0 auto; padding: 22px 20px 80px; }
+.section { display: none; animation: fadeIn 0.3s ease; }
+.section.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; } }
+.section-header { background: white; border: 1px solid #D3D1C7; border-radius: 12px; padding: 15px 20px; margin-bottom: 16px; display: flex; align-items: flex-start; gap: 13px; }
+.section-badge { width: 33px; height: 33px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px; flex-shrink: 0; }
+.badge-1 { background: #EEEDFE; color: #3C3489; } .badge-2 { background: #E6F1FB; color: #0C447C; }
+.badge-3 { background: #FAEEDA; color: #633806; } .badge-4 { background: #EAF3DE; color: #27500A; }
+.badge-5 { background: #FAECE7; color: #712B13; }
+.section-header h2 { font-size: 16px; font-weight: 600; margin-bottom: 3px; }
+.section-header p { font-size: 13px; color: #5F5E5A; line-height: 1.5; }
+.research-tag { display: inline-block; font-size: 11px; background: #F5F4F0; border: 1px solid #D3D1C7; color: #888780; padding: 2px 10px; border-radius: 100px; margin-top: 6px; }
+.hint-bar { background: #FAEEDA; border: 1px solid #FAC775; border-radius: 10px; padding: 9px 14px; font-size: 13px; color: #633806; margin-bottom: 14px; line-height: 1.5; }
+
+/* ── CONTROLS ── */
+.controls { display: flex; gap: 9px; align-items: center; flex-wrap: wrap; margin-top: 12px; }
+.btn-primary { padding: 9px 19px; border-radius: 8px; border: none; background: #2C2C2A; color: #F5F4F0; font-size: 14px; font-family: 'DM Sans', sans-serif; font-weight: 500; cursor: pointer; }
+.btn-primary:hover { background: #444441; }
+.btn-secondary { padding: 9px 15px; border-radius: 8px; border: 1px solid #D3D1C7; background: white; color: #5F5E5A; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; }
+.btn-secondary:hover { background: #F5F4F0; }
+.btn-next { padding: 9px 19px; border-radius: 8px; border: none; background: #185FA5; color: white; font-size: 14px; font-family: 'DM Sans', sans-serif; font-weight: 500; cursor: pointer; display: none; }
+.btn-next:hover { background: #0C447C; }
+.score-pill { display: none; padding: 5px 12px; border-radius: 100px; font-size: 13px; font-weight: 600; background: #EAF3DE; color: #27500A; border: 1px solid #C0DD97; }
+.feedback { display: none; margin-top: 11px; padding: 10px 14px; border-radius: 10px; font-size: 14px; line-height: 1.6; }
+.feedback.show { display: block; }
+.feedback.great { background: #EAF3DE; color: #27500A; border: 1px solid #C0DD97; }
+.feedback.partial { background: #FAEEDA; color: #633806; border: 1px solid #FAC775; }
+.feedback.low { background: #FAECE7; color: #712B13; border: 1px solid #F5C4B3; }
+
+/* ── PART 1: EMOJI MATCH ── */
+.emoji-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; margin-bottom: 16px; }
+.emoji-card { background: white; border: 2px dashed #D3D1C7; border-radius: 12px; padding: 14px 10px; text-align: center; cursor: pointer; transition: border-color 0.15s, background 0.15s; min-height: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
+.emoji-card .emoji-icon { font-size: 28px; line-height: 1; }
+.emoji-card .emoji-slot { font-size: 13px; color: #888780; font-style: italic; min-height: 20px; }
+.emoji-card.filled { border-style: solid; border-color: #B5D4F4; background: #E6F1FB; }
+.emoji-card.filled .emoji-slot { color: #0C447C; font-style: normal; font-weight: 500; }
+.emoji-card.drag-over { border-color: #378ADD; background: #E6F1FB44; }
+.word-chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px; background: white; border: 1px solid #D3D1C7; border-radius: 10px; margin-bottom: 14px; min-height: 50px; }
+.word-chip { padding: 7px 15px; border-radius: 100px; font-size: 13px; font-weight: 500; border: 1px solid #D3D1C7; background: white; cursor: grab; user-select: none; transition: box-shadow 0.12s, transform 0.12s, opacity 0.12s; }
+.word-chip:hover { box-shadow: 0 2px 6px rgba(0,0,0,0.1); transform: translateY(-1px); }
+.word-chip.used { opacity: 0.3; pointer-events: none; }
+
+/* ── PART 2: DEFINITION MATCH ── */
+.def-word-bank { background: white; border: 1px solid #D3D1C7; border-radius: 10px; padding: 12px 14px; margin-bottom: 16px; }
+.def-bank-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #888780; margin-bottom: 9px; }
+.def-chips { display: flex; flex-wrap: wrap; gap: 7px; min-height: 36px; }
+.def-word-chip { padding: 8px 16px; border-radius: 100px; font-size: 13px; font-weight: 600; border: 1.5px solid #D3D1C7; background: white; cursor: pointer; user-select: none; display: flex; align-items: center; gap: 7px; transition: box-shadow 0.12s, transform 0.12s, background 0.12s, border-color 0.12s; }
+.def-word-chip:hover { box-shadow: 0 2px 6px rgba(0,0,0,0.09); transform: translateY(-1px); }
+.def-word-chip.selected { background: #2C2C2A; color: white; border-color: #2C2C2A; transform: scale(1.05); }
+.def-word-chip.used { opacity: 0.28; pointer-events: none; }
+.def-match-grid { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
+.def-def-row { background: white; border: 2px dashed #D3D1C7; border-radius: 10px; padding: 13px 16px; font-size: 14px; color: #888780; cursor: pointer; line-height: 1.6; transition: border-color 0.15s, background 0.15s; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.def-def-row:hover { border-color: #B5D4F4; background: #E6F1FB22; }
+.def-def-row.ready { border-color: #378ADD; background: #E6F1FB33; color: #2C2C2A; }
+.def-def-row.filled { border-style: solid; border-color: #B5D4F4; background: #E6F1FB11; }
+.def-def-text { flex: 1; }
+.def-matched-word { font-size: 12px; font-weight: 600; padding: 3px 12px; border-radius: 100px; background: #E6F1FB; color: #0C447C; border: 1px solid #B5D4F4; white-space: nowrap; flex-shrink: 0; display: flex; align-items: center; gap: 5px; }
+
+/* ── PART 3: FILL IN THE BLANK ── */
+.fitb-bank { background: white; border: 1px solid #D3D1C7; border-radius: 10px; padding: 12px 14px; margin-bottom: 14px; }
+.fitb-bank-inner { display: flex; flex-wrap: wrap; gap: 7px; min-height: 36px; }
+.fitb-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 14px; }
+.fitb-item { background: white; border: 1px solid #D3D1C7; border-radius: 12px; padding: 16px 18px; }
+.fitb-sentence { font-size: 15px; line-height: 2.6; }
+.fitb-blank { display: inline-block; min-width: 160px; border: 2px dashed #D3D1C7; padding: 4px 12px; margin: 0 4px; text-align: center; font-weight: 600; color: #888780; border-radius: 8px; cursor: pointer; transition: background 0.12s, border-color 0.12s; vertical-align: middle; }
+.fitb-blank:hover { border-color: #B5D4F4; background: #E6F1FB22; }
+.fitb-blank.ready { border-color: #378ADD; background: #E6F1FB44; color: #0C447C; }
+.fitb-blank.filled { border-style: solid; border-color: #B5D4F4; color: #0C447C; background: #E6F1FB; cursor: pointer; }
+.fitb-blank.filled:hover { border-color: #D3D1C7; background: #F5F4F0; color: #888780; }
+.fitb-blank.correct { border-color: #C0DD97; color: #27500A; background: #EAF3DE; cursor: default; }
+.fitb-blank.incorrect { border-color: #F5C4B3; color: #712B13; background: #FAECE7; }
+.fitb-chip { padding: 7px 16px; border-radius: 100px; font-size: 13px; font-weight: 500; border: 1.5px solid #D3D1C7; background: white; cursor: pointer; user-select: none; transition: box-shadow 0.12s, transform 0.12s, background 0.12s, border-color 0.12s; }
+.fitb-chip:hover { box-shadow: 0 2px 6px rgba(0,0,0,0.09); transform: translateY(-1px); }
+.fitb-chip.selected { background: #2C2C2A; color: white; border-color: #2C2C2A; transform: scale(1.05); }
+.fitb-chip.used { opacity: 0.28; pointer-events: none; }
+
+/* ── PART 4: WORD SORT ── */
+.sort-board { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 14px; }
+.sort-drop { min-height: 120px; border: 2px dashed #D3D1C7; border-radius: 10px; padding: 10px; display: flex; flex-wrap: wrap; gap: 6px; align-content: flex-start; background: white; transition: border-color 0.15s; }
+.sort-drop.drag-over { border-color: #378ADD; background: #E6F1FB22; }
+.sort-bank { background: white; border: 1px solid #D3D1C7; border-radius: 10px; padding: 12px; margin-bottom: 14px; }
+.sort-chip { padding: 7px 14px; border-radius: 100px; font-size: 13px; font-weight: 500; border: 1px solid #D3D1C7; background: white; cursor: grab; user-select: none; display: flex; align-items: center; gap: 6px; transition: box-shadow 0.12s, transform 0.12s; }
+.sort-chip:hover { box-shadow: 0 2px 6px rgba(0,0,0,0.08); transform: translateY(-1px); }
+
+/* ── PART 5: GRAPH ANALYSIS ── */
+.graph-skill-box { background: white; border: 1px solid #D3D1C7; border-radius: 12px; padding: 18px 20px; margin-bottom: 18px; }
+.graph-skill-box h3 { font-size: 14px; font-weight: 600; margin-bottom: 12px; color: #2C2C2A; display: flex; align-items: center; gap: 8px; }
+.graph-steps { display: flex; flex-direction: column; gap: 8px; }
+.graph-step { display: flex; align-items: flex-start; gap: 12px; padding: 10px 12px; border-radius: 8px; background: #F5F4F0; }
+.graph-step-num { width: 24px; height: 24px; border-radius: 50%; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.gs1 { background: #EEEDFE; color: #3C3489; }
+.gs2 { background: #E6F1FB; color: #0C447C; }
+.gs3 { background: #FAEEDA; color: #633806; }
+.gs4 { background: #EAF3DE; color: #27500A; }
+.graph-step p { font-size: 13px; color: #5F5E5A; line-height: 1.5; }
+.graph-step strong { color: #2C2C2A; }
+
+.chart-section { background: white; border: 1px solid #D3D1C7; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+.chart-section h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.chart-section .chart-subtitle { font-size: 12px; color: #888780; margin-bottom: 16px; }
+.chart-wrapper { margin-bottom: 18px; background: #FAFAFA; border: 1px solid #ECEAE3; border-radius: 10px; padding: 16px; }
+.chart-canvas-container { width: 100%; overflow-x: auto; }
+canvas.chart { width: 100%; max-width: 700px; display: block; margin: 0 auto; }
+
+.analysis-questions { display: flex; flex-direction: column; gap: 14px; }
+.aq-item { border: 1px solid #D3D1C7; border-radius: 10px; overflow: hidden; }
+.aq-label { display: flex; align-items: center; gap: 10px; padding: 10px 14px; font-size: 13px; font-weight: 600; border-bottom: 1px solid #ECEAE3; }
+.aq-step-badge { width: 22px; height: 22px; border-radius: 50%; font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.aq-body { padding: 10px 14px; background: white; }
+.aq-prompt { font-size: 13px; color: #5F5E5A; margin-bottom: 8px; line-height: 1.5; font-style: italic; }
+.aq-textarea { width: 100%; padding: 10px 12px; border: 1.5px solid #D3D1C7; border-radius: 8px; font-size: 13px; font-family: 'DM Sans', sans-serif; resize: vertical; min-height: 52px; transition: border-color 0.15s; }
+.aq-textarea:focus { outline: none; border-color: #185FA5; }
+.aq-textarea.filled { border-color: #B5D4F4; background: #E6F1FB08; }
+
+/* ── MC QUESTION STYLES ── */
+.mc-question { border: 1px solid #D3D1C7; border-radius: 10px; overflow: hidden; margin-bottom: 0; }
+.mc-options { display: flex; flex-direction: column; gap: 6px; padding: 10px 14px; background: white; }
+.mc-option { display: flex; align-items: center; gap: 10px; padding: 9px 13px; border-radius: 8px; border: 1.5px solid #D3D1C7; background: white; cursor: pointer; font-size: 13px; color: #2C2C2A; transition: border-color 0.12s, background 0.12s; text-align: left; font-family: 'DM Sans', sans-serif; width: 100%; }
+.mc-option:hover { border-color: #B5D4F4; background: #E6F1FB22; }
+.mc-option.selected { border-color: #185FA5; background: #E6F1FB; color: #0C447C; font-weight: 500; }
+.mc-option.correct { border-color: #3B6D11; background: #EAF3DE; color: #27500A; font-weight: 600; pointer-events: none; }
+.mc-option.incorrect { border-color: #993C1D; background: #FAECE7; color: #712B13; pointer-events: none; }
+.mc-option.reveal-correct { border-color: #3B6D11; background: #EAF3DE; color: #27500A; font-weight: 600; pointer-events: none; }
+.axis-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 0; }
+@media (max-width: 580px) { .axis-row { grid-template-columns: 1fr; } }
+.mc-radio { width: 16px; height: 16px; border-radius: 50%; border: 2px solid #D3D1C7; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: border-color 0.12s; }
+.mc-option.selected .mc-radio { border-color: #185FA5; background: #185FA5; }
+.mc-option.selected .mc-radio::after { content: ''; width: 6px; height: 6px; border-radius: 50%; background: white; display: block; }
+.mc-option.correct .mc-radio, .mc-option.reveal-correct .mc-radio { border-color: #3B6D11; background: #3B6D11; }
+.mc-option.correct .mc-radio::after, .mc-option.reveal-correct .mc-radio::after { content: ''; width: 6px; height: 6px; border-radius: 50%; background: white; display: block; }
+.mc-option.incorrect .mc-radio { border-color: #993C1D; background: #993C1D; }
+.mc-option.incorrect .mc-radio::after { content: '✕'; font-size: 9px; color: white; line-height: 1; }
+
+/* ── TIERED SENTENCE ACTIVITY ── */
+.tier-toggle { display: flex; gap: 8px; margin-bottom: 18px; align-items: center; flex-wrap: wrap; }
+.tier-toggle-label { font-size: 13px; color: #5F5E5A; font-weight: 500; margin-right: 4px; }
+.tier-btn { padding: 7px 18px; border-radius: 100px; font-size: 13px; font-family: 'DM Sans', sans-serif; border: 1.5px solid #D3D1C7; background: white; color: #5F5E5A; cursor: pointer; transition: all 0.15s; }
+.tier-btn.active-beginner { background: #EEEDFE; border-color: #CECBF6; color: #3C3489; font-weight: 600; }
+.tier-btn.active-intermediate { background: #E6F1FB; border-color: #B5D4F4; color: #0C447C; font-weight: 600; }
+.sf-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 14px; }
+.sf-item { background: white; border: 1px solid #D3D1C7; border-radius: 12px; padding: 16px 18px; }
+.sf-word { font-size: 13px; font-weight: 600; color: #534AB7; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+.sf-completed-badge { font-size: 11px; background: #EAF3DE; color: #27500A; border: 1px solid #C0DD97; border-radius: 100px; padding: 2px 10px; margin-left: auto; }
+.scramble-instruction { font-size: 13px; color: #5F5E5A; margin-bottom: 10px; }
+.scramble-dropzone { display: flex; flex-wrap: wrap; gap: 6px; min-height: 46px; border: 2px dashed #D3D1C7; border-radius: 10px; padding: 8px 10px; background: #F5F4F0; margin-bottom: 8px; align-items: center; transition: border-color 0.15s, background 0.15s; }
+.scramble-dropzone.drag-over { border-color: #534AB7; background: #EEEDFE33; }
+.scramble-dropzone.has-answer { border-color: #C0DD97; background: #EAF3DE22; }
+.scramble-bank { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px 10px; background: white; border: 1px solid #D3D1C7; border-radius: 10px; min-height: 42px; }
+.phrase-chip { padding: 6px 13px; border-radius: 8px; font-size: 13px; border: 1px solid #D3D1C7; background: white; cursor: grab; user-select: none; transition: box-shadow 0.12s, transform 0.12s; white-space: nowrap; }
+.phrase-chip:hover { box-shadow: 0 2px 6px rgba(0,0,0,0.1); transform: translateY(-1px); }
+.phrase-chip.in-answer { background: #EEEDFE; border-color: #CECBF6; color: #3C3489; }
+.scramble-check { font-size: 12px; margin-top: 4px; display: none; }
+.scramble-check.show { display: block; }
+.sf-frame { font-size: 14px; color: #5F5E5A; margin-bottom: 10px; line-height: 1.6; font-style: italic; background: #F5F4F0; padding: 8px 12px; border-radius: 8px; border-left: 3px solid #CECBF6; }
+.sf-frame strong { color: #534AB7; font-style: normal; }
+.sf-input { width: 100%; padding: 10px 14px; border-radius: 8px; border: 1.5px solid #D3D1C7; font-size: 14px; font-family: 'DM Sans', sans-serif; background: white; resize: none; min-height: 58px; transition: border-color 0.15s; }
+.sf-input:focus { outline: none; border-color: #534AB7; }
+.sf-input.filled { border-color: #CECBF6; background: #EEEDFE11; }
+.sf-char-count { font-size: 11px; color: #888780; margin-top: 4px; text-align: right; }
+
+/* ── CERT ── */
+#certSection { text-align: center; padding: 8px 0; }
+.cert-name-row { display: flex; gap: 10px; align-items: center; justify-content: center; margin-bottom: 18px; flex-wrap: wrap; }
+.cert-name-row input { padding: 10px 15px; border-radius: 8px; border: 1px solid #D3D1C7; font-size: 15px; font-family: 'DM Sans', sans-serif; width: 270px; }
+#certCanvas { border: 1px solid #D3D1C7; border-radius: 12px; max-width: 100%; margin: 0 auto 18px; display: block; }
+
+@media (max-width: 600px) {
+  header { padding: 11px 14px; }
+  main { padding: 12px 12px 60px; }
+  .welcome-card { padding: 28px 18px; }
+  .emoji-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ WELCOME ══ -->
+<div id="welcomeScreen">
+  <div class="welcome-card">
+    <h1>10B: Globalization</h1>
+    <p class="welcome-unit">Sheltered American Studies · ELL Level 1</p>
+    <div class="welcome-topic">🌍 Globalization Unit</div>
+    <div class="welcome-steps">
+      <div class="ws"><div class="wsn wsn-1">1</div>Word &amp; Picture Match — connect words to images</div>
+      <div class="ws"><div class="wsn wsn-2">2</div>Definition Match — match each word to its meaning</div>
+      <div class="ws"><div class="wsn wsn-3">3</div>Fill in the Blank — use words in real sentences</div>
+      <div class="ws"><div class="wsn wsn-4">4</div>Word Sort — organize words by category</div>
+      <div class="ws"><div class="wsn wsn-5">5</div>Graph Analysis — read charts using the 4 steps</div>
+    </div>
+    <label class="name-label" for="welcomeName">Your full name</label>
+    <div class="name-row">
+      <input type="text" id="welcomeName" placeholder="First and last name..." autocomplete="name" onkeydown="if(event.key==='Enter') startLesson()">
+      <button class="btn-primary" onclick="startLesson()">Start →</button>
+    </div>
+    <div class="err" id="nameError">Please type your name before starting.</div>
+    <div id="savedNote"></div>
+    <div class="restore-section">
+      <button class="restore-toggle" onclick="toggleRestore()">Have a save code? Click here to restore your progress</button>
+      <div class="restore-area" id="restoreArea">
+        <textarea id="restoreCode" placeholder="Paste your save code here..."></textarea>
+        <div style="margin-top:8px;display:flex;gap:8px;">
+          <button class="btn-primary" onclick="restoreFromCode()">Restore progress</button>
+        </div>
+        <div class="err" id="restoreError">Invalid save code. Please check and try again.</div>
+      </div>
+    </div>
+    <div style="margin-top:22px;padding-top:12px;border-top:1px solid #ECEAE3;text-align:right;">
+      <button onclick="welcomeReset()" style="font-size:10px;color:#D3D1C7;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.05em;">reset</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SAVE MODAL ══ -->
+<div class="modal-overlay" id="saveModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeSaveModal()">✕</button>
+    <h3>Save your progress</h3>
+    <p>Copy this code and save it — email it to yourself or paste it in Google Docs. Use it next time on the welcome screen to pick up where you left off.</p>
+    <div class="save-code-box" id="saveCodeDisplay"></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <button class="btn-primary" id="copyBtn" onclick="copySaveCode()">Copy code</button>
+      <button class="btn-secondary" onclick="closeSaveModal()">Close</button>
+    </div>
+    <p style="margin-top:10px;font-size:12px;color:#888780;">Progress also saves automatically in this browser.</p>
+  </div>
+</div>
+
+<!-- ══ APP ══ -->
+<div id="appShell">
+  <header>
+    <div class="hd-left">
+      <h1>10B: Globalization — Vocabulary</h1>
+      <p>ELL Level 1 — Vocabulary &amp; Graph Analysis</p>
+    </div>
+    <div class="hd-right">
+      <div class="student-chip">Student: <span id="headerName">—</span></div>
+
+      <div class="progress-nav">
+        <div class="progress-step"><div class="step-circle active" id="sc1">1</div><span class="step-label">Match</span></div>
+        <div class="step-line"></div>
+        <div class="progress-step"><div class="step-circle" id="sc2">2</div><span class="step-label">Definitions</span></div>
+        <div class="step-line"></div>
+        <div class="progress-step"><div class="step-circle" id="sc3">3</div><span class="step-label">Blanks</span></div>
+        <div class="step-line"></div>
+        <div class="progress-step"><div class="step-circle" id="sc4">4</div><span class="step-label">Sort</span></div>
+        <div class="step-line"></div>
+        <div class="progress-step"><div class="step-circle" id="sc5">5</div><span class="step-label">Graphs</span></div>
+        <div class="step-line"></div>
+        <div class="progress-step"><div class="step-circle" id="sc6">★</div><span class="step-label">Certificate</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- PART 1 -->
+    <div class="section active" id="sec1">
+      <div class="section-header">
+        <div class="section-badge badge-1">1</div>
+        <div><h2>Word &amp; Picture Match</h2><p>Drag each word to the correct picture. Use the emoji as a clue!</p><span class="research-tag">First exposure — building word-image connections (Nation, 2001)</span></div>
+      </div>
+      <div class="hint-bar">Look at each picture (emoji). Drag the correct word from the word bank below to match it.</div>
+      <div class="word-chips" id="emojiWordBank" ondragover="event.preventDefault()" ondrop="emojiChipDrop(event, null)"></div>
+      <div class="emoji-grid" id="emojiGrid"></div>
+      <div class="controls">
+        <button class="btn-primary" onclick="checkEmoji()">Check my answers</button>
+        <button class="btn-secondary" onclick="resetEmoji()">Reset</button>
+        <span class="score-pill" id="emojiScore"></span>
+      </div>
+      <div class="feedback" id="emojiFeedback"></div>
+      <div class="controls" style="margin-top:12px;"><button class="btn-next" id="btn1to2" onclick="goTo(2)">Next: Definition Match →</button></div>
+    </div>
+
+    <!-- PART 2 -->
+    <div class="section" id="sec2">
+      <div class="section-header">
+        <div class="section-badge badge-2">2</div>
+        <div><h2>Definition Match</h2><p>Match each vocabulary word to its definition.</p><span class="research-tag">Deepening meaning — receptive recognition (Beck et al., 2002)</span></div>
+      </div>
+      <div class="hint-bar">Click a word in the bank to select it (it turns dark), then click the definition it matches. Click a matched definition to undo it.</div>
+      <div class="def-word-bank">
+        <div class="def-bank-label">Words — click to select, then click the matching definition</div>
+        <div class="def-chips" id="defWordBank"></div>
+      </div>
+      <div class="def-match-grid" id="defMatchGrid"></div>
+      <div class="controls">
+        <button class="btn-primary" onclick="checkDefs()">Check my answers</button>
+        <button class="btn-secondary" onclick="resetDefs()">Reset</button>
+        <span class="score-pill" id="defScore"></span>
+      </div>
+      <div class="feedback" id="defFeedback"></div>
+      <div class="controls" style="margin-top:12px;"><button class="btn-next" id="btn2to3" onclick="goTo(3)">Next: Fill in the Blank →</button></div>
+    </div>
+
+    <!-- PART 3 -->
+    <div class="section" id="sec3">
+      <div class="section-header">
+        <div class="section-badge badge-3">3</div>
+        <div><h2>Fill in the Blank</h2><p>Choose the correct word to complete each sentence.</p><span class="research-tag">Contextual understanding — comprehensible input (Krashen, 1985)</span></div>
+      </div>
+      <div class="hint-bar">Click a word in the bank to select it, then click the blank where it belongs. Click a filled blank to return the word.</div>
+      <div class="fitb-bank">
+        <div class="def-bank-label">Word bank — click a word, then click a blank</div>
+        <div class="fitb-bank-inner" id="fitbBankInner"></div>
+      </div>
+      <div class="fitb-list" id="fitbList"></div>
+      <div class="controls">
+        <button class="btn-primary" onclick="checkFitb()">Check my answers</button>
+        <button class="btn-secondary" onclick="resetFitb()">Reset</button>
+        <span class="score-pill" id="fitbScore"></span>
+      </div>
+      <div class="feedback" id="fitbFeedback"></div>
+      <div class="controls" style="margin-top:12px;"><button class="btn-next" id="btn3to4" onclick="goTo(4)">Next: Word Sort →</button></div>
+    </div>
+
+    <!-- PART 4 -->
+    <div class="section" id="sec4">
+      <div class="section-header">
+        <div class="section-badge badge-4">4</div>
+        <div><h2>Word Sort</h2><p>Sort each word into the correct category.</p><span class="research-tag">Semantic networks — concept-based categorization (Graves, 2006)</span></div>
+      </div>
+      <div class="hint-bar">Think about what each word means. Drag it to the category that fits best.</div>
+      <div class="sort-bank">
+        <div class="def-bank-label">Words — drag to a category</div>
+        <div class="def-chips" id="sortBank"></div>
+      </div>
+      <div class="sort-board" id="sortBoard"></div>
+      <div class="controls">
+        <button class="btn-primary" onclick="checkSort()">Check my answers</button>
+        <button class="btn-secondary" onclick="resetSort()">Reset</button>
+        <span class="score-pill" id="sortScore"></span>
+      </div>
+      <div class="feedback" id="sortFeedback"></div>
+      <div class="controls" style="margin-top:12px;"><button class="btn-next" id="btn4to5" onclick="goTo(5)">Next: Graph Analysis →</button></div>
+    </div>
+
+    <!-- PART 5: GRAPH ANALYSIS -->
+    <div class="section" id="sec5">
+      <div class="section-header">
+        <div class="section-badge badge-5">5</div>
+        <div>
+          <h2>Graph Analysis</h2>
+          <p>Use the 4-step reading strategy from 10A to analyze real data charts about globalization.</p>
+          <span class="research-tag">Academic literacy — disciplinary reading of data (Zwiers, 2014)</span>
+        </div>
+      </div>
+      <div class="hint-bar">Remember from 10A: read the title → read the key/labels → read the axes → identify patterns and trends.</div>
+
+      <!-- 4-step reminder -->
+      <div class="graph-skill-box">
+        <h3>📊 4 Steps to Read a Graph</h3>
+        <div class="graph-steps">
+          <div class="graph-step">
+            <div class="graph-step-num gs1">1</div>
+            <p><strong>Read the title</strong> — What is this graph or chart about?</p>
+          </div>
+          <div class="graph-step">
+            <div class="graph-step-num gs2">2</div>
+            <p><strong>Read the key / labels</strong> — What do the colors, symbols, or labels mean?</p>
+          </div>
+          <div class="graph-step">
+            <div class="graph-step-num gs3">3</div>
+            <p><strong>Read the axes</strong> — What is on the vertical (up/down) axis? What is on the horizontal (left/right) axis?</p>
+          </div>
+          <div class="graph-step">
+            <div class="graph-step-num gs4">4</div>
+            <p><strong>Identify patterns and trends</strong> — Is it going up, going down, or staying the same? What does that tell us?</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart 1 -->
+      <div class="chart-section">
+        <h3>Chart 1: World GDP Over Time</h3>
+        <p class="chart-subtitle">This chart shows how the total value of goods and services produced by all countries has changed since 1970.</p>
+        <div class="chart-wrapper">
+          <div class="chart-canvas-container">
+            <canvas id="gdpChart" height="280"></canvas>
+          </div>
+        </div>
+        <div class="analysis-questions" id="gdpQuestions">
+          <div class="mc-question">
+            <div class="aq-label" style="background:#EEEDFE;color:#3C3489;">
+              <div class="aq-step-badge" style="background:#3C3489;color:white;">1</div>
+              Step 1: Title — What is this chart about?
+            </div>
+            <div class="mc-options" id="gdp_1"></div>
+          </div>
+          <div class="mc-question">
+            <div class="aq-label" style="background:#E6F1FB;color:#0C447C;">
+              <div class="aq-step-badge" style="background:#0C447C;color:white;">2</div>
+              Step 2: Key / Labels — What does the blue line represent?
+            </div>
+            <div class="mc-options" id="gdp_2"></div>
+          </div>
+          <div class="axis-row">
+            <div class="mc-question">
+              <div class="aq-label" style="background:#FAEEDA;color:#633806;">
+                <div class="aq-step-badge" style="background:#633806;color:white;">3a</div>
+                Step 3a: Vertical Axis — What does the left axis show?
+              </div>
+              <div class="mc-options" id="gdp_3a"></div>
+            </div>
+            <div class="mc-question">
+              <div class="aq-label" style="background:#FAEEDA;color:#633806;">
+                <div class="aq-step-badge" style="background:#633806;color:white;">3b</div>
+                Step 3b: Horizontal Axis — What does the bottom axis show?
+              </div>
+              <div class="mc-options" id="gdp_3b"></div>
+            </div>
+          </div>
+          <div class="mc-question">
+            <div class="aq-label" style="background:#EAF3DE;color:#27500A;">
+              <div class="aq-step-badge" style="background:#27500A;color:white;">4</div>
+              Step 4: Patterns &amp; Trends — What does this chart show about world GDP?
+            </div>
+            <div class="mc-options" id="gdp_4"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart 2 -->
+      <div class="chart-section">
+        <h3>Chart 2: U.S. Immigration Over Time</h3>
+        <p class="chart-subtitle">This chart shows how many people immigrated to the United States each decade since 1900.</p>
+        <div class="chart-wrapper">
+          <div class="chart-canvas-container">
+            <canvas id="immigrationChart" height="280"></canvas>
+          </div>
+        </div>
+        <div class="analysis-questions" id="immigrationQuestions">
+          <div class="mc-question">
+            <div class="aq-label" style="background:#EEEDFE;color:#3C3489;">
+              <div class="aq-step-badge" style="background:#3C3489;color:white;">1</div>
+              Step 1: Title — What is this chart about?
+            </div>
+            <div class="mc-options" id="imm_1"></div>
+          </div>
+          <div class="mc-question">
+            <div class="aq-label" style="background:#E6F1FB;color:#0C447C;">
+              <div class="aq-step-badge" style="background:#0C447C;color:white;">2</div>
+              Step 2: Key / Labels — What do the blue bars represent?
+            </div>
+            <div class="mc-options" id="imm_2"></div>
+          </div>
+          <div class="axis-row">
+            <div class="mc-question">
+              <div class="aq-label" style="background:#FAEEDA;color:#633806;">
+                <div class="aq-step-badge" style="background:#633806;color:white;">3a</div>
+                Step 3a: Vertical Axis — What does the left axis show?
+              </div>
+              <div class="mc-options" id="imm_3a"></div>
+            </div>
+            <div class="mc-question">
+              <div class="aq-label" style="background:#FAEEDA;color:#633806;">
+                <div class="aq-step-badge" style="background:#633806;color:white;">3b</div>
+                Step 3b: Horizontal Axis — What does the bottom axis show?
+              </div>
+              <div class="mc-options" id="imm_3b"></div>
+            </div>
+          </div>
+          <div class="mc-question">
+            <div class="aq-label" style="background:#EAF3DE;color:#27500A;">
+              <div class="aq-step-badge" style="background:#27500A;color:white;">4</div>
+              Step 4: Patterns &amp; Trends — What trend does this chart show about immigration to the U.S.?
+            </div>
+            <div class="mc-options" id="imm_4"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart 3 -->
+      <div class="chart-section">
+        <h3>Chart 3: Global Wealth Inequality</h3>
+        <p class="chart-subtitle">This chart shows what percentage of the world's wealth is owned by different groups of people.</p>
+        <div class="chart-wrapper">
+          <div class="chart-canvas-container">
+            <canvas id="wealthChart" height="280"></canvas>
+          </div>
+        </div>
+        <div class="analysis-questions" id="wealthQuestions">
+          <div class="mc-question">
+            <div class="aq-label" style="background:#EEEDFE;color:#3C3489;">
+              <div class="aq-step-badge" style="background:#3C3489;color:white;">1</div>
+              Step 1: Title — What is this chart about?
+            </div>
+            <div class="mc-options" id="wlth_1"></div>
+          </div>
+          <div class="mc-question">
+            <div class="aq-label" style="background:#E6F1FB;color:#0C447C;">
+              <div class="aq-step-badge" style="background:#0C447C;color:white;">2</div>
+              Step 2: Key / Labels — What do the two bars for each group represent?
+            </div>
+            <div class="mc-options" id="wlth_2"></div>
+          </div>
+          <div class="axis-row">
+            <div class="mc-question">
+              <div class="aq-label" style="background:#FAEEDA;color:#633806;">
+                <div class="aq-step-badge" style="background:#633806;color:white;">3a</div>
+                Step 3a: Vertical Axis — What does the left axis show?
+              </div>
+              <div class="mc-options" id="wlth_3a"></div>
+            </div>
+            <div class="mc-question">
+              <div class="aq-label" style="background:#FAEEDA;color:#633806;">
+                <div class="aq-step-badge" style="background:#633806;color:white;">3b</div>
+                Step 3b: Horizontal Axis — What does the bottom axis show?
+              </div>
+              <div class="mc-options" id="wlth_3b"></div>
+            </div>
+          </div>
+          <div class="mc-question">
+            <div class="aq-label" style="background:#EAF3DE;color:#27500A;">
+              <div class="aq-step-badge" style="background:#27500A;color:white;">4</div>
+              Step 4: Patterns &amp; Trends — What does this chart tell us about wealth inequality?
+            </div>
+            <div class="mc-options" id="wlth_4"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="btn-primary" onclick="checkGraphs()">Check my work</button>
+        <span class="score-pill" id="graphScore"></span>
+      </div>
+      <div class="feedback" id="graphFeedback"></div>
+      <div class="controls" style="margin-top:12px;">
+        <button class="btn-next" id="btn5to6" onclick="goTo(6)">Get My Certificate →</button>
+      </div>
+    </div>
+
+    <!-- CERTIFICATE -->
+    <div class="section" id="sec6">
+      <div class="section-header">
+        <div class="section-badge" style="background:#FAEEDA;color:#633806;font-size:17px;">★</div>
+        <div><h2>You finished the vocabulary unit!</h2><p>Download your certificate and upload it to Canvas.</p></div>
+      </div>
+      <div id="certSection">
+        <div class="cert-name-row">
+          <input type="text" id="studentNameCert" placeholder="Your name..." oninput="drawCert()">
+          <button class="btn-primary" onclick="downloadCert()">Download Certificate</button>
+        </div>
+        <canvas id="certCanvas" width="860" height="640"></canvas>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+/* ════════════════════════════════
+   VOCABULARY DATA
+════════════════════════════════ */
+const UNIT_DISPLAY_TITLE = '10B: Globalization';
+const UNIT_DISPLAY_SUBTITLE = 'Globalization Unit';
+const SAVE_KEY = '10b_globalization_v1';
+const TEACHER_PASS = 'anson2024';
+
+const WORDS = [
+  { word: 'Globalization',    emoji: '🌍', def: 'The process of countries becoming more connected through trade, technology, and the movement of people and ideas.',           category: 'Big Ideas', frame: 'Globalization connects countries because ___.' },
+  { word: 'Global Trade',     emoji: '🌐💰', def: 'Buying and selling goods and services between countries.',                                                                    category: 'Trade',     frame: 'Global trade is important because ___.' },
+  { word: 'Import',           emoji: '📥', def: 'Goods that a country buys from another country.',                                                                             category: 'Trade',     frame: 'When a country imports goods, it means ___.' },
+  { word: 'Export',           emoji: '📤', def: 'Goods that a country sells to another country.',                                                                              category: 'Trade',     frame: 'When a country exports goods, it means ___.' },
+  { word: 'Goods',            emoji: '📦', def: 'Things that are made or grown to be bought and sold.',                                                                        category: 'Trade',     frame: 'Examples of goods include ___.' },
+  { word: 'Population Growth',emoji: '📈', def: 'When the number of people in a country is increasing.',                                                                       category: 'People',    frame: 'Population growth happens when ___.' },
+  { word: 'Population Decline',emoji:'📉', def: 'When the number of people in a country is decreasing.',                                                                       category: 'People',    frame: 'Population decline can cause problems because ___.' },
+  { word: 'Immigration',      emoji: '🧳', def: 'People moving from one country to another country to live.',                                                                   category: 'People',    frame: 'Immigration affects a country when ___.' },
+  { word: 'Wealth Inequality', emoji:'⚖️', def: 'When some people or countries have much more money than others.',                                                              category: 'Big Ideas', frame: 'Wealth inequality is a problem because ___.' },
+  { word: 'GDP',              emoji: '💰', def: 'Gross Domestic Product — the total value of all goods and services made in a country in one year.',                           category: 'Big Ideas', frame: 'A country\'s GDP tells us ___.' },
+];
+
+const CATEGORIES = ['Big Ideas', 'Trade', 'People'];
+
+const CAT_COLORS = {
+  'Big Ideas': { bg:'#E6F1FB', border:'#B5D4F4', text:'#0C447C', hdr:'#185FA5' },
+  'Trade':     { bg:'#EAF3DE', border:'#C0DD97', text:'#27500A', hdr:'#3B6D11' },
+  'People':    { bg:'#FAEEDA', border:'#FAC775', text:'#633806', hdr:'#854F0B' },
+};
+
+const FITB_SENTENCES = [
+  { sentence: 'Before ___, most people only bought food and clothing made in their own country. Now they can buy things from all over the world.', answer: 'Globalization' },
+  { sentence: 'Japan sells cars to the U.S., and the U.S. sells food to Japan. This buying and selling between countries is called ___.', answer: 'Global Trade' },
+  { sentence: 'The U.S. does not grow enough coffee for everyone. So it pays Brazil to send coffee here. The U.S. will ___ that coffee.', answer: 'Import' },
+  { sentence: 'Iowa farmers grow more corn than people in Iowa can eat. So they sell it to other countries. Iowa farmers ___ their corn.', answer: 'Export' },
+  { sentence: 'At a store, you can find shoes, phones, food, and clothes. All of these things are called ___. Countries trade them with each other.', answer: 'Goods' },
+  { sentence: 'In 2024, more babies were born in the U.S. and more people moved here from other countries. This caused ___.', answer: 'Population Growth' },
+  { sentence: 'In Japan, many older people are retiring but not many babies are being born. Over time, Japan will have fewer and fewer people. This is called ___.', answer: 'Population Decline' },
+  { sentence: 'Maria left her home country and moved to the United States to find a better job and a safer life. Her move is an example of ___.', answer: 'Immigration' },
+  { sentence: 'In the U.S., a CEO might make 300 times more money than a worker at the same company. This gap between rich and poor is called ___.', answer: 'Wealth Inequality' },
+  { sentence: 'Country A makes a lot of cars, food, and technology every year. Country B makes very little. Country A has a much higher ___ than Country B.', answer: 'GDP' },
+];
+
+const SCRAMBLES = {
+  'Globalization':     ['Globalization connects countries', 'by allowing goods, money,', 'and ideas', 'to move across borders.'],
+  'Global Trade':      ['Global trade allows', 'the United States', 'to buy products from Mexico', 'and sell goods to Japan.'],
+  'Import':            ['When the U.S. imports oil,', 'it buys that oil', 'from another country', 'like Canada or Saudi Arabia.'],
+  'Export':            ['The U.S. exports food', 'like soybeans and corn', 'to countries', 'all around the world.'],
+  'Goods':             ['Goods like clothing, cars,', 'and electronics', 'are traded between countries', 'every single day.'],
+  'Population Growth': ['Population growth happens', 'when more babies are born', 'or when people', 'move into a country.'],
+  'Population Decline':['Population decline can happen', 'when people have fewer children', 'or when young people', 'move away to find jobs.'],
+  'Immigration':       ['Immigration brings new workers', 'and new ideas', 'to a country,', 'helping its economy grow.'],
+  'Wealth Inequality': ['Wealth inequality means', 'some people have millions of dollars', 'while others struggle', 'to afford food and shelter.'],
+  'GDP':               ['A country\'s GDP measures', 'the total value of all goods', 'and services it produces', 'in one year.'],
+};
+
+/* ════════════════════════════════
+   STATE
+════════════════════════════════ */
+let studentName = '';
+const S = {
+  section: 1,
+  emoji: {}, def: {}, defWordOrder: null, defDefOrder: null,
+  fitb: {}, sort: {}, sentences: {}, scramble: {}, tier: 'beginner',
+  graphNotes: {}, graphChecked: false,
+  done: { emoji: false, def: false, fitb: false, sort: false, graphs: false }
+};
+
+function shuffle(arr) {
+  const a=[...arr]; for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a;
+}
+
+/* ── SAVE / RESTORE ── */
+function toB64(str){return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,(_,p)=>String.fromCharCode('0x'+p)));}
+function fromB64(b64){return decodeURIComponent(atob(b64).split('').map(c=>'%'+('00'+c.charCodeAt(0).toString(16)).slice(-2)).join(''));}
+function buildPayload(){return{v:1,name:studentName,s:S.section,em:S.emoji,df:S.def,dwo:S.defWordOrder,ddo:S.defDefOrder,fb:S.fitb,so:S.sort,sn:S.sentences,sc:S.scramble,ti:S.tier,gn:S.graphNotes,gc:S.graphChecked,dn:S.done};}
+function applyPayload(d){
+  if(!d||d.v!==1)return false;
+  studentName=d.name||''; S.section=d.s||1;
+  S.emoji=d.em||{}; S.def=d.df||{}; S.defWordOrder=d.dwo||null; S.defDefOrder=d.ddo||null;
+  S.fitb=d.fb||{}; S.sort=d.so||{}; S.sentences=d.sn||{}; S.scramble=d.sc||{}; S.tier=d.ti||'beginner';
+  S.graphNotes=d.gn||{}; S.graphChecked=d.gc||false;
+  S.done=d.dn||{emoji:false,def:false,fitb:false,sort:false,graphs:false};
+  return true;
+}
+function autoSave(){try{localStorage.setItem(SAVE_KEY,JSON.stringify(buildPayload()));}catch(e){}}
+function openSaveModal(){try{autoSave();document.getElementById('saveCodeDisplay').textContent=toB64(JSON.stringify(buildPayload()));document.getElementById('saveModal').classList.add('open');}catch(e){alert('Could not generate save code.');}}
+function closeSaveModal(){document.getElementById('saveModal').classList.remove('open');}
+function copySaveCode(){const t=document.getElementById('saveCodeDisplay').textContent;navigator.clipboard.writeText(t).then(()=>{const b=document.getElementById('copyBtn');b.textContent='Copied!';setTimeout(()=>b.textContent='Copy code',2000);});}
+function restoreFromCode(){try{const d=JSON.parse(fromB64(document.getElementById('restoreCode').value.trim()));if(!applyPayload(d))throw new Error();document.getElementById('welcomeName').value=studentName;launchApp();}catch(e){document.getElementById('restoreError').style.display='block';}}
+function toggleRestore(){const a=document.getElementById('restoreArea');a.style.display=a.style.display==='block'?'none':'block';}
+
+window.addEventListener('load',()=>{
+  try{
+    const raw=localStorage.getItem(SAVE_KEY); if(!raw)return;
+    const d=JSON.parse(raw);
+    if(d&&d.name&&d.v===1){applyPayload(d);document.getElementById('welcomeName').value=studentName;const n=document.getElementById('savedNote');n.className='saved-note';n.textContent='✓ Progress found for '+studentName+'. Press Start to continue.';}
+  }catch(e){}
+});
+
+/* ── WELCOME & LAUNCH ── */
+function startLesson(){const v=document.getElementById('welcomeName').value.trim();if(!v){document.getElementById('nameError').style.display='block';return;}studentName=v;launchApp();}
+function launchApp(){
+  document.getElementById('welcomeScreen').style.display='none';
+  document.getElementById('appShell').style.display='block';
+  document.getElementById('headerName').textContent=studentName;
+  document.getElementById('studentNameCert').value=studentName;
+  buildEmoji();buildDefs();buildFitb();buildSort();
+  restoreUI();
+  setTimeout(()=>{buildCharts();if(S.section===5)buildMCQuestions();},200);
+  autoSave();
+}
+
+/* ── NAVIGATION ── */
+function goTo(n){
+  S.section=n;
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById('sec'+n).classList.add('active');
+  [1,2,3,4,5,6].forEach(i=>{const el=document.getElementById('sc'+i);el.className='step-circle';if(i<n)el.classList.add('done');else if(i===n)el.classList.add('active');});
+  if(n===5){setTimeout(()=>{buildCharts();buildMCQuestions();},200);}
+  if(n===6){document.getElementById('studentNameCert').value=studentName;setTimeout(drawCert,120);}
+  window.scrollTo({top:0,behavior:'smooth'});autoSave();
+}
+function restoreUI(){
+  goTo(S.section);
+  renderEmoji();renderDefs();renderFitb();renderSort();
+  if(S.done.emoji)document.getElementById('btn1to2').style.display='inline-block';
+  if(S.done.def)document.getElementById('btn2to3').style.display='inline-block';
+  if(S.done.fitb)document.getElementById('btn3to4').style.display='inline-block';
+  if(S.done.sort)document.getElementById('btn4to5').style.display='inline-block';
+  if(S.done.graphs)document.getElementById('btn5to6').style.display='inline-block';
+}
+
+/* ── PART 1: EMOJI MATCH ── */
+let emojiDrag=null;
+function buildEmoji(){WORDS.forEach(w=>{if(!S.emoji[w.word])S.emoji[w.word]=null;});}
+function renderEmoji(){
+  const bank=document.getElementById('emojiWordBank'),grid=document.getElementById('emojiGrid');
+  if(!bank||!grid)return; bank.innerHTML='';grid.innerHTML='';
+  const placed=new Set(Object.values(S.emoji).filter(Boolean));
+  shuffle(WORDS).forEach(w=>{const chip=document.createElement('div');chip.className='word-chip'+(placed.has(w.word)?' used':'');chip.textContent=w.word;chip.draggable=!placed.has(w.word);chip.ondragstart=()=>{emojiDrag=w.word;};bank.appendChild(chip);});
+  WORDS.forEach(w=>{const card=document.createElement('div');card.className='emoji-card'+(S.emoji[w.word]?' filled':'');card.innerHTML=`<div class="emoji-icon">${w.emoji}</div><div class="emoji-slot">${S.emoji[w.word]||'drop word here'}</div>`;card.ondragover=e=>{e.preventDefault();card.classList.add('drag-over');};card.ondragleave=()=>card.classList.remove('drag-over');card.ondrop=e=>{e.preventDefault();card.classList.remove('drag-over');emojiChipDrop(e,w.word);};grid.appendChild(card);});
+}
+function emojiChipDrop(e,targetWord){if(!emojiDrag)return;Object.keys(S.emoji).forEach(k=>{if(S.emoji[k]===emojiDrag)S.emoji[k]=null;});if(targetWord!==null)S.emoji[targetWord]=emojiDrag;emojiDrag=null;renderEmoji();autoSave();}
+function checkEmoji(){let c=0;WORDS.forEach(w=>{if(S.emoji[w.word]===w.word)c++;});const t=WORDS.length,pill=document.getElementById('emojiScore'),fb=document.getElementById('emojiFeedback');pill.textContent=c+' / '+t+' correct';pill.style.display='inline-block';if(c>=Math.ceil(t*0.7)){fb.textContent=c===t?'Perfect! You matched all the words to their pictures!':'Great job! '+c+'/'+t+' correct. You can move on!';fb.className='feedback show great';S.done.emoji=true;document.getElementById('btn1to2').style.display='inline-block';}else{fb.textContent='Keep trying! Look at each emoji carefully — it gives you a clue about the word\'s meaning.';fb.className='feedback show partial';}autoSave();}
+function resetEmoji(){WORDS.forEach(w=>S.emoji[w.word]=null);renderEmoji();document.getElementById('emojiFeedback').className='feedback';document.getElementById('emojiScore').style.display='none';autoSave();}
+
+/* ── PART 2: DEFINITION MATCH ── */
+let defSelected=null;
+function buildDefs(){
+  WORDS.forEach(w=>{if(!S.def[w.word])S.def[w.word]=null;});
+  if(!S.defWordOrder)S.defWordOrder=shuffle(WORDS.map(w=>w.word));
+  if(!S.defDefOrder)S.defDefOrder=shuffle(WORDS.map(w=>w.word));
+}
+function renderDefs(){
+  const bank=document.getElementById('defWordBank'),grid=document.getElementById('defMatchGrid');
+  if(!bank||!grid)return; bank.innerHTML='';grid.innerHTML='';
+  const usedWords=new Set(Object.keys(S.def).filter(k=>S.def[k]!==null));
+  const wordOrder=(S.defWordOrder||WORDS.map(w=>w.word)).map(name=>WORDS.find(w=>w.word===name));
+  wordOrder.forEach(w=>{const chip=document.createElement('div');const isUsed=usedWords.has(w.word);chip.className='def-word-chip'+(isUsed?' used':'')+(defSelected===w.word?' selected':'');chip.innerHTML=`<span>${w.emoji}</span><span>${w.word}</span>`;chip.onclick=()=>{if(isUsed)return;defSelected=defSelected===w.word?null:w.word;renderDefs();};bank.appendChild(chip);});
+  const defOrder=(S.defDefOrder||WORDS.map(w=>w.word)).map(name=>WORDS.find(w=>w.word===name));
+  defOrder.forEach(w=>{const row=document.createElement('div');const matchedWord=Object.keys(S.def).find(k=>S.def[k]===w.def)||null;let cls='def-def-row';if(matchedWord)cls+=' filled';else if(defSelected)cls+=' ready';row.className=cls;const defText=document.createElement('div');defText.className='def-def-text';defText.textContent=w.def;row.appendChild(defText);if(matchedWord){const mw=WORDS.find(x=>x.word===matchedWord);const badge=document.createElement('div');badge.className='def-matched-word';badge.innerHTML=`<span>${mw.emoji}</span><span>${matchedWord}</span>`;row.appendChild(badge);}row.onclick=()=>{if(defSelected){Object.keys(S.def).forEach(k=>{if(S.def[k]===w.def)S.def[k]=null;});S.def[defSelected]=w.def;defSelected=null;renderDefs();autoSave();}else if(matchedWord){S.def[matchedWord]=null;renderDefs();autoSave();}};grid.appendChild(row);});
+}
+function checkDefs(){let c=0;WORDS.forEach(w=>{if(S.def[w.word]===w.def)c++;});const t=WORDS.length,pill=document.getElementById('defScore'),fb=document.getElementById('defFeedback');pill.textContent=c+' / '+t+' correct';pill.style.display='inline-block';if(c>=Math.ceil(t*0.7)){fb.textContent=c===t?'Excellent! You matched every word to its definition!':'Great work! '+c+'/'+t+' — you can move on!';fb.className='feedback show great';S.done.def=true;document.getElementById('btn2to3').style.display='inline-block';}else{fb.textContent='Keep going! Re-read each definition carefully.';fb.className='feedback show partial';}autoSave();}
+function resetDefs(){WORDS.forEach(w=>S.def[w.word]=null);defSelected=null;S.defWordOrder=shuffle(WORDS.map(w=>w.word));S.defDefOrder=shuffle(WORDS.map(w=>w.word));renderDefs();document.getElementById('defFeedback').className='feedback';document.getElementById('defScore').style.display='none';autoSave();}
+
+/* ── PART 3: FILL IN THE BLANK ── */
+let fitbSelected=null;
+function buildFitb(){FITB_SENTENCES.forEach((_,i)=>{if(S.fitb[i]===undefined)S.fitb[i]=null;});}
+function renderFitb(){
+  const list=document.getElementById('fitbList'),bankInner=document.getElementById('fitbBankInner');
+  if(!list||!bankInner)return; list.innerHTML='';bankInner.innerHTML='';
+  const usedWords=new Set(Object.values(S.fitb).filter(Boolean));
+  shuffle(WORDS).forEach(w=>{const chip=document.createElement('div');const isUsed=usedWords.has(w.word);chip.className='fitb-chip'+(isUsed?' used':'')+(fitbSelected===w.word?' selected':'');chip.textContent=w.word;chip.onclick=()=>{if(isUsed)return;fitbSelected=fitbSelected===w.word?null:w.word;renderFitb();};bankInner.appendChild(chip);});
+  FITB_SENTENCES.forEach((item,i)=>{const div=document.createElement('div');div.className='fitb-item';const parts=item.sentence.split('___');const filled=S.fitb[i];const sentDiv=document.createElement('div');sentDiv.className='fitb-sentence';sentDiv.appendChild(document.createTextNode(parts[0]));const blank=document.createElement('span');let cls='fitb-blank';if(filled)cls+=' filled';else if(fitbSelected)cls+=' ready';blank.className=cls;blank.textContent=filled||(fitbSelected?'click to place':'click a word first');blank.onclick=()=>{if(fitbSelected){S.fitb[i]=fitbSelected;fitbSelected=null;renderFitb();autoSave();}else if(filled){S.fitb[i]=null;renderFitb();autoSave();}};sentDiv.appendChild(blank);if(parts[1])sentDiv.appendChild(document.createTextNode(parts[1]));div.appendChild(sentDiv);list.appendChild(div);});
+}
+function checkFitb(){let c=0;FITB_SENTENCES.forEach((item,i)=>{if(S.fitb[i]===item.answer)c++;});const t=FITB_SENTENCES.length,pill=document.getElementById('fitbScore'),fb=document.getElementById('fitbFeedback');pill.textContent=c+' / '+t+' correct';pill.style.display='inline-block';if(c>=Math.ceil(t*0.7)){fb.textContent=c===t?'Perfect! You used every vocabulary word correctly in context!':'Well done! '+c+'/'+t+' correct. You can continue!';fb.className='feedback show great';S.done.fitb=true;document.getElementById('btn3to4').style.display='inline-block';}else if(c>=Math.ceil(t*0.4)){fb.textContent='Getting there! Re-read the sentence — the context gives you clues about which word fits.';fb.className='feedback show partial';}else{fb.textContent='Try again! Click a word to select it, then click the blank where it belongs.';fb.className='feedback show low';}autoSave();}
+function resetFitb(){FITB_SENTENCES.forEach((_,i)=>S.fitb[i]=null);fitbSelected=null;renderFitb();document.getElementById('fitbFeedback').className='feedback';document.getElementById('fitbScore').style.display='none';autoSave();}
+
+/* ── PART 4: WORD SORT ── */
+let sortDrag=null;
+function buildSort(){WORDS.forEach(w=>{if(!S.sort[w.word])S.sort[w.word]='bank';});}
+function renderSort(){
+  const bank=document.getElementById('sortBank'),board=document.getElementById('sortBoard');
+  if(!bank||!board)return; bank.innerHTML='';board.innerHTML='';
+  shuffle(WORDS).forEach(w=>{if(S.sort[w.word]!=='bank')return;const chip=document.createElement('div');chip.className='def-chip';chip.innerHTML=`${w.emoji} ${w.word}`;chip.draggable=true;chip.ondragstart=()=>{sortDrag=w.word;};bank.appendChild(chip);});
+  CATEGORIES.forEach(cat=>{const col=document.createElement('div');const c=CAT_COLORS[cat];const hdr=document.createElement('div');hdr.style.cssText=`background:${c.bg};color:${c.hdr};font-size:13px;font-weight:600;text-align:center;padding:9px;border-radius:8px;margin-bottom:7px;`;hdr.textContent=cat;col.appendChild(hdr);const drop=document.createElement('div');drop.className='sort-drop';drop.ondragover=e=>{e.preventDefault();drop.classList.add('drag-over');};drop.ondragleave=()=>drop.classList.remove('drag-over');drop.ondrop=e=>{e.preventDefault();drop.classList.remove('drag-over');if(!sortDrag)return;S.sort[sortDrag]=cat;sortDrag=null;renderSort();autoSave();};WORDS.filter(w=>S.sort[w.word]===cat).forEach(w=>{const chip=document.createElement('div');chip.className='sort-chip';chip.style.cssText=`background:${c.bg};border-color:${c.border};color:${c.text};`;chip.innerHTML=`${w.emoji} ${w.word}`;chip.draggable=true;chip.ondragstart=()=>{sortDrag=w.word;};drop.appendChild(chip);});col.appendChild(drop);board.appendChild(col);});
+  const bankEl=document.getElementById('sortBank');bankEl.ondragover=e=>e.preventDefault();bankEl.ondrop=e=>{e.preventDefault();if(!sortDrag)return;S.sort[sortDrag]='bank';sortDrag=null;renderSort();autoSave();};
+}
+function checkSort(){let c=0;WORDS.forEach(w=>{if(S.sort[w.word]===w.category)c++;});const t=WORDS.length,pill=document.getElementById('sortScore'),fb=document.getElementById('sortFeedback');pill.textContent=c+' / '+t+' correct';pill.style.display='inline-block';if(c>=Math.ceil(t*0.7)){fb.textContent=c===t?'Perfect! You sorted all the words correctly!':'Great job! '+c+'/'+t+' correct. You can move on!';fb.className='feedback show great';S.done.sort=true;document.getElementById('btn4to5').style.display='inline-block';}else{fb.textContent='Think about what each word means. Re-read the definitions if you need a reminder.';fb.className='feedback show partial';}autoSave();}
+function resetSort(){WORDS.forEach(w=>S.sort[w.word]='bank');renderSort();document.getElementById('sortFeedback').className='feedback';document.getElementById('sortScore').style.display='none';autoSave();}
+
+/* ── PART 5: GRAPH ANALYSIS ── */
+let chartsBuilt = false;
+
+function buildCharts(){
+  if(chartsBuilt) return;
+  chartsBuilt = true;
+  buildGDPChart();
+  buildImmigrationChart();
+  buildWealthChart();
+}
+
+function buildGDPChart(){
+  const canvas = document.getElementById('gdpChart');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const years = [1970,1975,1980,1985,1990,1995,2000,2005,2010,2015,2020,2024];
+  const gdp   = [3.4, 6.4, 11.2, 13.0, 22.6, 30.8, 33.6, 47.6, 66.1, 75.0, 85.0, 105.0];
+
+  const w = canvas.width = canvas.parentElement.offsetWidth || 700;
+  const h = canvas.height = 280;
+  const pad = {top:30, right:30, bottom:50, left:70};
+  const cw = w - pad.left - pad.right;
+  const ch = h - pad.top - pad.bottom;
+
+  const maxVal = 110;
+  const xScale = i => pad.left + (i / (years.length-1)) * cw;
+  const yScale = v => pad.top + ch - (v / maxVal) * ch;
+
+  ctx.clearRect(0,0,w,h);
+
+  // grid
+  ctx.strokeStyle = '#ECEAE3'; ctx.lineWidth = 1;
+  [0,20,40,60,80,100].forEach(v => {
+    const y = yScale(v);
+    ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(pad.left+cw, y); ctx.stroke();
+    ctx.fillStyle='#888780'; ctx.font='11px DM Sans,sans-serif'; ctx.textAlign='right';
+    ctx.fillText('$'+v+'T', pad.left-8, y+4);
+  });
+
+  // x axis labels
+  ctx.fillStyle='#888780'; ctx.textAlign='center'; ctx.font='11px DM Sans,sans-serif';
+  years.forEach((yr,i) => { if(i%2===0) ctx.fillText(yr, xScale(i), h-pad.bottom+16); });
+
+  // line
+  ctx.strokeStyle='#185FA5'; ctx.lineWidth=2.5; ctx.beginPath();
+  years.forEach((_,i) => i===0 ? ctx.moveTo(xScale(i),yScale(gdp[i])) : ctx.lineTo(xScale(i),yScale(gdp[i])));
+  ctx.stroke();
+
+  // area fill
+  ctx.globalAlpha=0.12; ctx.fillStyle='#185FA5'; ctx.beginPath();
+  years.forEach((_,i) => i===0 ? ctx.moveTo(xScale(i),yScale(gdp[i])) : ctx.lineTo(xScale(i),yScale(gdp[i])));
+  ctx.lineTo(xScale(years.length-1), yScale(0)); ctx.lineTo(xScale(0), yScale(0)); ctx.closePath(); ctx.fill();
+  ctx.globalAlpha=1;
+
+  // dots
+  years.forEach((_,i) => {
+    ctx.beginPath(); ctx.arc(xScale(i), yScale(gdp[i]), 4, 0, Math.PI*2);
+    ctx.fillStyle='white'; ctx.fill(); ctx.strokeStyle='#185FA5'; ctx.lineWidth=2; ctx.stroke();
+  });
+
+  // axis labels
+  ctx.save(); ctx.translate(16, pad.top + ch/2); ctx.rotate(-Math.PI/2);
+  ctx.fillStyle='#5F5E5A'; ctx.font='12px DM Sans,sans-serif'; ctx.textAlign='center';
+  ctx.fillText('World GDP (Trillion USD)', 0, 0); ctx.restore();
+  ctx.fillStyle='#5F5E5A'; ctx.font='12px DM Sans,sans-serif'; ctx.textAlign='center';
+  ctx.fillText('Year', pad.left+cw/2, h-4);
+}
+
+function buildImmigrationChart(){
+  const canvas = document.getElementById('immigrationChart');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const decades = ['1900s','1910s','1920s','1930s','1940s','1950s','1960s','1970s','1980s','1990s','2000s','2010s'];
+  const vals    = [8.8, 5.7, 4.1, 0.5, 1.0, 2.5, 3.3, 4.5, 7.3, 9.8, 10.5, 11.7];
+
+  const w = canvas.width = canvas.parentElement.offsetWidth || 700;
+  const h = canvas.height = 280;
+  const pad = {top:30, right:30, bottom:60, left:70};
+  const cw = w - pad.left - pad.right;
+  const ch = h - pad.top - pad.bottom;
+
+  const maxVal = 14;
+  const barW = cw / decades.length * 0.6;
+  const xCenter = i => pad.left + (i+0.5) * (cw / decades.length);
+  const yScale = v => pad.top + ch - (v / maxVal) * ch;
+
+  ctx.clearRect(0,0,w,h);
+
+  // grid
+  ctx.strokeStyle='#ECEAE3'; ctx.lineWidth=1;
+  [0,2,4,6,8,10,12,14].forEach(v => {
+    const y = yScale(v);
+    ctx.beginPath(); ctx.moveTo(pad.left,y); ctx.lineTo(pad.left+cw,y); ctx.stroke();
+    ctx.fillStyle='#888780'; ctx.font='11px DM Sans,sans-serif'; ctx.textAlign='right';
+    ctx.fillText(v+'M', pad.left-8, y+4);
+  });
+
+  // bars
+  decades.forEach((d,i) => {
+    const x = xCenter(i) - barW/2;
+    const barH = (vals[i]/maxVal)*ch;
+    const y = pad.top + ch - barH;
+    ctx.fillStyle = vals[i] >= 9 ? '#185FA5' : '#B5D4F4';
+    ctx.beginPath();
+    if(ctx.roundRect) ctx.roundRect(x, y, barW, barH, [4,4,0,0]);
+    else { ctx.rect(x,y,barW,barH); }
+    ctx.fill();
+
+    // x labels
+    ctx.fillStyle='#888780'; ctx.font='10px DM Sans,sans-serif'; ctx.textAlign='center';
+    ctx.save(); ctx.translate(xCenter(i), h-pad.bottom+10); ctx.rotate(-Math.PI/4);
+    ctx.fillText(d,0,0); ctx.restore();
+  });
+
+  // axis labels
+  ctx.save(); ctx.translate(16, pad.top + ch/2); ctx.rotate(-Math.PI/2);
+  ctx.fillStyle='#5F5E5A'; ctx.font='12px DM Sans,sans-serif'; ctx.textAlign='center';
+  ctx.fillText('People (Millions)', 0, 0); ctx.restore();
+  ctx.fillStyle='#5F5E5A'; ctx.font='12px DM Sans,sans-serif'; ctx.textAlign='center';
+  ctx.fillText('Decade', pad.left+cw/2, h-4);
+
+  // legend
+  ctx.fillStyle='#185FA5'; ctx.fillRect(pad.left+cw-130, pad.top, 12, 12);
+  ctx.fillStyle='#5F5E5A'; ctx.font='11px DM Sans,sans-serif'; ctx.textAlign='left';
+  ctx.fillText('Highest decades', pad.left+cw-114, pad.top+10);
+}
+
+function buildWealthChart(){
+  const canvas = document.getElementById('wealthChart');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  const groups = ['Top 1%', 'Next 9%', 'Next 40%', 'Bottom 50%'];
+  const pct2000 = [32, 38, 22, 8];
+  const pct2024 = [47, 35, 14, 4];
+  const colors2000 = ['#F5C4B3','#CECBF6','#C0DD97','#B5D4F4'];
+  const colors2024 = ['#993C1D','#534AB7','#3B6D11','#185FA5'];
+
+  const w = canvas.width = canvas.parentElement.offsetWidth || 700;
+  const h = canvas.height = 280;
+  const pad = {top:30, right:140, bottom:50, left:70};
+  const cw = w - pad.left - pad.right;
+  const ch = h - pad.top - pad.bottom;
+  const maxVal = 55;
+  const groupW = cw / groups.length;
+  const barW = groupW * 0.3;
+
+  ctx.clearRect(0,0,w,h);
+
+  // grid
+  ctx.strokeStyle='#ECEAE3'; ctx.lineWidth=1;
+  [0,10,20,30,40,50].forEach(v => {
+    const y = pad.top + ch - (v/maxVal)*ch;
+    ctx.beginPath(); ctx.moveTo(pad.left,y); ctx.lineTo(pad.left+cw,y); ctx.stroke();
+    ctx.fillStyle='#888780'; ctx.font='11px DM Sans,sans-serif'; ctx.textAlign='right';
+    ctx.fillText(v+'%', pad.left-8, y+4);
+  });
+
+  groups.forEach((g,i) => {
+    const cx = pad.left + (i+0.5)*groupW;
+
+    // 2000 bar
+    const h00 = (pct2000[i]/maxVal)*ch;
+    const y00 = pad.top+ch-h00;
+    ctx.fillStyle = colors2000[i];
+    ctx.fillRect(cx - barW - 2, y00, barW, h00);
+
+    // 2024 bar
+    const h24 = (pct2024[i]/maxVal)*ch;
+    const y24 = pad.top+ch-h24;
+    ctx.fillStyle = colors2024[i];
+    ctx.fillRect(cx + 2, y24, barW, h24);
+
+    // value labels
+    ctx.fillStyle='#2C2C2A'; ctx.font='bold 11px DM Sans,sans-serif'; ctx.textAlign='center';
+    ctx.fillText(pct2000[i]+'%', cx-barW/2-2, y00-4);
+    ctx.fillText(pct2024[i]+'%', cx+barW/2+2, y24-4);
+
+    // group label
+    ctx.fillStyle='#5F5E5A'; ctx.font='11px DM Sans,sans-serif'; ctx.textAlign='center';
+    ctx.fillText(g, cx, h-pad.bottom+16);
+  });
+
+  // legend
+  const lx = w - pad.right + 12;
+  [[colors2000[0],'2000 (lighter)'],[colors2024[0],'2024 (darker)']].forEach(([c,label],i) => {
+    ctx.fillStyle=c; ctx.fillRect(lx, pad.top + i*22, 14, 14);
+    ctx.fillStyle='#5F5E5A'; ctx.font='11px DM Sans,sans-serif'; ctx.textAlign='left';
+    ctx.fillText(label, lx+18, pad.top+i*22+11);
+  });
+
+  // axis labels
+  ctx.save(); ctx.translate(16, pad.top + ch/2); ctx.rotate(-Math.PI/2);
+  ctx.fillStyle='#5F5E5A'; ctx.font='12px DM Sans,sans-serif'; ctx.textAlign='center';
+  ctx.fillText('% of World Wealth Owned', 0, 0); ctx.restore();
+  ctx.fillStyle='#5F5E5A'; ctx.font='12px DM Sans,sans-serif'; ctx.textAlign='center';
+  ctx.fillText('Wealth Group', pad.left+cw/2, h-4);
+}
+
+/* ── PART 5: MC QUESTIONS DATA ── */
+const MC_QUESTIONS = {
+  gdp_1: {
+    question: 'What is this chart about?',
+    options: [
+      'How the population of the United States has changed over time',
+      'How the total value of goods and services produced by all countries has grown since 1970',
+      'How much money the United States imports and exports each year',
+      'How many countries participate in global trade'
+    ],
+    correct: 1
+  },
+  gdp_2: {
+    options: [
+      'The number of countries in the world each year',
+      'The total amount of immigration to all countries',
+      'The total value of all goods and services produced by the world (GDP) measured in trillions of dollars',
+      'The United States share of global trade'
+    ],
+    correct: 2
+  },
+  gdp_3a: {
+    options: [
+      'The number of countries that joined global trade',
+      'The world GDP measured in trillions of US dollars',
+      'The percentage of people living in poverty',
+      'The total U.S. exports each year'
+    ],
+    correct: 1
+  },
+  gdp_3b: {
+    options: [
+      'The names of different countries',
+      'The percentage of the world that is wealthy',
+      'The years from 1970 to 2024',
+      'The number of people in the world'
+    ],
+    correct: 2
+  },
+  gdp_4: {
+    options: [
+      'World GDP has stayed the same — countries produce the same amount every year',
+      'World GDP went up and then came back down after 2000',
+      'World GDP has been rising steadily, suggesting globalization has helped countries produce more over time',
+      'World GDP only grows in wealthy countries like the U.S. and does not affect poorer countries'
+    ],
+    correct: 2
+  },
+  imm_1: {
+    options: [
+      'How the GDP of the United States has changed since 1900',
+      'How many people have left the United States each decade',
+      'How many people immigrated to the United States in each decade since the 1900s',
+      'Which countries immigrants come from'
+    ],
+    correct: 2
+  },
+  imm_2: {
+    options: [
+      'The number of countries that allow immigration',
+      'The total world population each decade',
+      'The amount of money immigrants bring to the U.S.',
+      'The number of people (in millions) who immigrated to the U.S. during that decade'
+    ],
+    correct: 3
+  },
+  imm_3a: {
+    options: [
+      'The percentage of immigrants who became citizens',
+      'The number of immigration laws passed each decade',
+      'The number of people (in millions) who immigrated to the United States',
+      'The total GDP of immigrant home countries'
+    ],
+    correct: 2
+  },
+  imm_3b: {
+    options: [
+      'The countries immigrants came from',
+      'The decade (10-year period) when people immigrated',
+      'The states where immigrants settled',
+      'The jobs immigrants worked in the U.S.'
+    ],
+    correct: 1
+  },
+  imm_4: {
+    options: [
+      'Immigration was highest in the 1930s and 1940s and has been declining ever since',
+      'Immigration stayed exactly the same every decade for 120 years',
+      'Immigration was very high in the early 1900s, dropped in the mid-1900s, and has been rising again in recent decades',
+      'Immigration has had no effect on U.S. population growth'
+    ],
+    correct: 2
+  },
+  wlth_1: {
+    options: [
+      'How much the U.S. government spends on education and healthcare',
+      'What percentage of the world\'s total wealth is owned by different groups of people',
+      'How GDP has changed in rich vs. poor countries since 2000',
+      'How many people live in poverty in different countries'
+    ],
+    correct: 1
+  },
+  wlth_2: {
+    options: [
+      'One bar shows men and the other shows women in each group',
+      'One bar shows the year 2000 and the other shows 2024, comparing how much wealth each group owned',
+      'One bar shows wealth in the U.S. and the other shows wealth in other countries',
+      'One bar shows income and the other shows savings for each group'
+    ],
+    correct: 1
+  },
+  wlth_3a: {
+    options: [
+      'The number of people in each wealth group',
+      'The amount of money in dollars owned by each group',
+      'The percentage of the world\'s population in each group',
+      'The percentage of total world wealth owned by each group'
+    ],
+    correct: 3
+  },
+  wlth_3b: {
+    options: [
+      'The years from 2000 to 2024',
+      'The countries with the most wealth',
+      'The different wealth groups — from richest to poorest',
+      'The types of goods wealthy countries produce'
+    ],
+    correct: 2
+  },
+  wlth_4: {
+    options: [
+      'The chart shows that wealth is shared equally — all groups own about 25% each',
+      'The chart shows that the Bottom 50% own the most wealth in both 2000 and 2024',
+      'The chart shows strong wealth inequality — in 2024, the top 1% owns 47% of all wealth while the bottom 50% owns only 4%',
+      'The chart shows that wealth inequality has decreased since 2000 because the top 1% owns less now'
+    ],
+    correct: 2
+  }
+};
+
+function buildMCQuestions(){
+  Object.keys(MC_QUESTIONS).forEach(key => {
+    const container = document.getElementById(key);
+    if(!container) return;
+    const q = MC_QUESTIONS[key];
+    const saved = (S.graphNotes && S.graphNotes[key] !== undefined) ? S.graphNotes[key] : null;
+    const isChecked = S.graphChecked || false;
+
+    q.options.forEach((opt, idx) => {
+      const btn = document.createElement('button');
+      btn.className = 'mc-option';
+      let cls = 'mc-option';
+      if(isChecked) {
+        if(idx === q.correct) cls += ' reveal-correct';
+        else if(saved === idx) cls += ' incorrect';
+      } else {
+        if(saved === idx) cls += ' selected';
+      }
+      btn.className = cls;
+      btn.innerHTML = `<div class="mc-radio"></div><span>${opt}</span>`;
+      btn.onclick = () => {
+        if(S.graphChecked) return;
+        if(!S.graphNotes) S.graphNotes = {};
+        S.graphNotes[key] = idx;
+        // re-render this group
+        container.querySelectorAll('.mc-option').forEach((b,i) => {
+          b.className = 'mc-option' + (i === idx ? ' selected' : '');
+        });
+        autoSave();
+      };
+      container.appendChild(btn);
+    });
+  });
+}
+
+function checkGraphs(){
+  const keys = ['gdp_1','gdp_2','gdp_3a','gdp_3b','gdp_4','imm_1','imm_2','imm_3a','imm_3b','imm_4','wlth_1','wlth_2','wlth_3a','wlth_3b','wlth_4'];
+  let correct = 0, answered = 0;
+  keys.forEach(k => {
+    const saved = S.graphNotes && S.graphNotes[k] !== undefined ? S.graphNotes[k] : null;
+    if(saved !== null) answered++;
+    if(saved === MC_QUESTIONS[k].correct) correct++;
+  });
+
+  const pill = document.getElementById('graphScore');
+  const fb = document.getElementById('graphFeedback');
+
+  if(answered < keys.length) {
+    const left = keys.length - answered;
+    fb.textContent = left + ' question(s) still need an answer. Choose one option for each question.';
+    fb.className = 'feedback show partial';
+    pill.textContent = answered + ' / ' + keys.length + ' answered';
+    pill.style.display = 'inline-block';
+    return;
+  }
+
+  // all answered — lock and reveal
+  S.graphChecked = true;
+  // re-render all MC to show correct/incorrect
+  document.querySelectorAll('.mc-options').forEach(c => c.innerHTML = '');
+  buildMCQuestions();
+
+  pill.textContent = correct + ' / ' + keys.length + ' correct';
+  pill.style.display = 'inline-block';
+
+  const pct = correct / keys.length;
+  if(pct >= 0.7){
+    fb.textContent = correct === keys.length ? 'Perfect! You read all three charts correctly using the 4 steps!' : 'Great work! ' + correct + '/' + keys.length + ' correct. You\'re ready to move on!';
+    fb.className = 'feedback show great';
+    S.done.graphs = true;
+    document.getElementById('btn5to6').style.display = 'inline-block';
+  } else {
+    fb.textContent = 'Keep going! Review the charts carefully and look at the titles, labels, and axes again.';
+    fb.className = 'feedback show partial';
+  }
+  autoSave();
+}
+
+/* ── CERTIFICATE ── */
+function drawCert(){
+  const canvas=document.getElementById('certCanvas');if(!canvas)return;
+  const ctx=canvas.getContext('2d'),w=canvas.width,h=canvas.height;
+  const name=document.getElementById('studentNameCert').value.trim()||studentName||'Student';
+  ctx.clearRect(0,0,w,h);ctx.fillStyle='#FAFAF8';ctx.fillRect(0,0,w,h);
+  ctx.strokeStyle='#2C2C2A';ctx.lineWidth=3;ctx.strokeRect(14,14,w-28,h-28);
+  ctx.strokeStyle='#D3D1C7';ctx.lineWidth=1;ctx.strokeRect(22,22,w-44,h-44);
+  const acc=(x,y,rx,ry)=>{ctx.strokeStyle='#2C2C2A';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(x,y+ry);ctx.lineTo(x,y);ctx.lineTo(x+rx,y);ctx.stroke();};
+  acc(30,30,28,28);acc(w-30,30,-28,28);acc(30,h-30,28,-28);acc(w-30,h-30,-28,-28);
+  ['#534AB7','#185FA5','#3B6D11'].forEach((col,i)=>{ctx.fillStyle=col;ctx.font='16px sans-serif';ctx.textAlign='left';ctx.fillText('★',55+i*22,76);ctx.fillText('★',w-75+i*22,76);});
+  ctx.textAlign='center';ctx.fillStyle='#2C2C2A';ctx.font='500 12px DM Sans, sans-serif';ctx.fillText('CERTIFICATE OF COMPLETION',w/2,88);
+  ctx.strokeStyle='#D3D1C7';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(80,100);ctx.lineTo(w-80,100);ctx.stroke();
+  ctx.fillStyle='#2C2C2A';ctx.font='400 14px DM Sans, sans-serif';ctx.fillText('This certifies that',w/2,136);
+  ctx.font='italic 400 32px Georgia, serif';ctx.fillStyle='#3C3489';ctx.fillText(name,w/2,184);
+  const nm=ctx.measureText(name),ul=Math.min(nm.width+40,500);
+  ctx.strokeStyle='#CECBF6';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(w/2-ul/2,193);ctx.lineTo(w/2+ul/2,193);ctx.stroke();
+  ctx.fillStyle='#2C2C2A';ctx.font='400 14px DM Sans, sans-serif';ctx.fillText('has successfully completed',w/2,226);
+  ctx.font='600 18px DM Sans, sans-serif';ctx.fillText('10B: Globalization — Vocabulary & Graph Analysis',w/2,254);
+  ctx.font='400 13px DM Sans, sans-serif';ctx.fillStyle='#5F5E5A';ctx.fillText('ELL Level 1 · '+WORDS.length+' vocabulary words · 4 vocabulary activities · 3 graph analyses',w/2,278);
+  ctx.strokeStyle='#D3D1C7';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(60,295);ctx.lineTo(w-60,295);ctx.stroke();
+  ctx.fillStyle='#2C2C2A';ctx.font='600 12px DM Sans, sans-serif';ctx.textAlign='center';ctx.fillText('Vocabulary words learned:',w/2,316);
+  const cols=2,colW=(w-160)/cols;ctx.font='400 12px DM Sans, sans-serif';ctx.textAlign='left';
+  WORDS.forEach((word,i)=>{const col=i%cols,row=Math.floor(i/cols),x=80+col*colW,y=336+row*20;ctx.fillStyle='#534AB7';ctx.fillText('•',x,y);ctx.fillStyle='#2C2C2A';ctx.fillText(word.emoji+' '+word.word,x+12,y);});
+  const sampleKey = Object.keys(S.graphNotes||{}).find(k=>S.graphNotes[k]&&S.graphNotes[k].trim().length>5);
+  if(sampleKey){
+    ctx.strokeStyle='#D3D1C7';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(60,445);ctx.lineTo(w-60,445);ctx.stroke();
+    ctx.fillStyle='#5F5E5A';ctx.font='400 11px DM Sans, sans-serif';ctx.textAlign='center';ctx.fillText('Student graph analysis sample:',w/2,465);
+    ctx.font='italic 400 12px Georgia, serif';ctx.fillStyle='#3C3489';
+    const sent='"'+S.graphNotes[sampleKey].trim().substring(0,110)+(S.graphNotes[sampleKey].length>110?'…':'"');
+    ctx.fillText(sent,w/2,485);
+  }
+  const today=new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+  ctx.fillStyle='#888780';ctx.font='400 11px DM Sans, sans-serif';ctx.textAlign='center';ctx.fillText('Completed: '+today,w/2,540);
+  ctx.strokeStyle='#2C2C2A';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(w/2-90,588);ctx.lineTo(w/2+90,588);ctx.stroke();
+  ctx.fillStyle='#888780';ctx.font='400 11px DM Sans, sans-serif';ctx.fillText('Teacher Signature',w/2,602);
+  ctx.fillStyle='#B4B2A9';ctx.fillText('ELL Level 1 — Sheltered American Studies',w/2,620);
+}
+function downloadCert(){drawCert();const canvas=document.getElementById('certCanvas');const link=document.createElement('a');const name=(document.getElementById('studentNameCert').value.trim()||studentName||'Student');link.download='10B_Globalization_Vocab_Certificate_'+name.replace(/\s+/g,'_')+'.png';link.href=canvas.toDataURL('image/png');link.click();}
+
+/* ── TEACHER MODE ── */
+let teacherMode=false;
+function enableTeacherMode(){const pass=prompt('Enter teacher password:');if(pass===null)return;if(pass!==TEACHER_PASS){alert('Incorrect password.');return;}teacherMode=true;document.getElementById('teacherBanner').style.display='flex';document.getElementById('teacherJumpBar').style.display='flex';['btn1to2','btn2to3','btn3to4','btn4to5','btn5to6'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='inline-block';});}
+function disableTeacherMode(){teacherMode=false;document.getElementById('teacherBanner').style.display='none';document.getElementById('teacherJumpBar').style.display='none';['btn1to2','btn2to3','btn3to4','btn4to5','btn5to6'].forEach(id=>{const el=document.getElementById(id);if(!el)return;const dm={btn1to2:S.done.emoji,btn2to3:S.done.def,btn3to4:S.done.fitb,btn4to5:S.done.sort,btn5to6:S.done.graphs};if(!dm[id])el.style.display='none';});}
+function teacherGoTo(n){goTo(n);['btn1to2','btn2to3','btn3to4','btn4to5','btn5to6'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='inline-block';});}
+
+/* ── RESET ── */
+function welcomeReset(){if(!confirm('Reset all progress?'))return;try{localStorage.removeItem(SAVE_KEY);}catch(e){}studentName='';S.section=1;S.emoji={};S.def={};S.defWordOrder=null;S.defDefOrder=null;S.fitb={};S.sort={};S.sentences={};S.scramble={};S.tier='beginner';S.graphNotes={};S.graphChecked=false;S.done={emoji:false,def:false,fitb:false,sort:false,graphs:false};document.getElementById('welcomeName').value='';document.getElementById('savedNote').textContent='';document.getElementById('nameError').style.display='none';}
+function resetAll(){if(!confirm('Reset ALL progress and return to the welcome screen?'))return;welcomeReset();document.getElementById('appShell').style.display='none';document.getElementById('welcomeScreen').style.display='flex';}
+</script>
+
+<!-- Teacher banner -->
+<div id="teacherBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#2C2C2A;color:#F5F4F0;padding:10px 24px;align-items:center;justify-content:space-between;gap:12px;z-index:300;flex-wrap:wrap;border-top:2px solid #854F0B;">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <span style="font-size:11px;background:#854F0B;color:#FAEEDA;padding:3px 10px;border-radius:100px;font-weight:600;letter-spacing:0.05em;">TEACHER MODE</span>
+    <span style="font-size:13px;color:#B4B2A9;">All sections unlocked.</span>
+  </div>
+  <div id="teacherJumpBar" style="display:none;align-items:center;gap:6px;flex-wrap:wrap;">
+    <span style="font-size:11px;color:#888780;">Jump to:</span>
+    <button onclick="teacherGoTo(1)" style="padding:4px 12px;border-radius:100px;border:1px solid #444441;background:transparent;color:#D3D1C7;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;">1 Match</button>
+    <button onclick="teacherGoTo(2)" style="padding:4px 12px;border-radius:100px;border:1px solid #444441;background:transparent;color:#D3D1C7;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;">2 Definitions</button>
+    <button onclick="teacherGoTo(3)" style="padding:4px 12px;border-radius:100px;border:1px solid #444441;background:transparent;color:#D3D1C7;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;">3 Fill Blank</button>
+    <button onclick="teacherGoTo(4)" style="padding:4px 12px;border-radius:100px;border:1px solid #444441;background:transparent;color:#D3D1C7;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;">4 Sort</button>
+    <button onclick="teacherGoTo(5)" style="padding:4px 12px;border-radius:100px;border:1px solid #444441;background:transparent;color:#D3D1C7;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;">5 Graphs</button>
+    <button onclick="teacherGoTo(6)" style="padding:4px 12px;border-radius:100px;border:1px solid #444441;background:transparent;color:#D3D1C7;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;">&#9733; Certificate</button>
+  </div>
+  <button onclick="disableTeacherMode()" style="padding:4px 14px;border-radius:100px;border:1px solid #554433;background:transparent;color:#FAC775;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;">Exit teacher mode</button>
+</div>
+
+<div style="text-align:center;padding:28px 20px 56px;border-top:1px solid #D3D1C7;margin-top:40px;">
+  <div style="display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;">
+    <button onclick="resetAll()" style="padding:6px 16px;border-radius:8px;border:1px solid #D3D1C7;background:white;color:#888780;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;">Reset all progress</button>
+    <button onclick="enableTeacherMode()" style="padding:6px 16px;border-radius:8px;border:1px solid #D3D1C7;background:white;color:#888780;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;">Teacher mode</button>
+  </div>
+  <p style="font-size:11px;color:#B4B2A9;margin-top:6px;">For teacher use only.</p>
+</div>
+
+</body>
+</html>
