@@ -1269,14 +1269,6 @@ function drawCert(){
   ctx.fillStyle='#2C2C2A';ctx.font='600 12px DM Sans, sans-serif';ctx.textAlign='center';ctx.fillText('Vocabulary words learned:',w/2,316);
   const cols=2,colW=(w-160)/cols;ctx.font='400 12px DM Sans, sans-serif';ctx.textAlign='left';
   WORDS.forEach((word,i)=>{const col=i%cols,row=Math.floor(i/cols),x=80+col*colW,y=336+row*20;ctx.fillStyle='#534AB7';ctx.fillText('•',x,y);ctx.fillStyle='#2C2C2A';ctx.fillText(word.emoji+' '+word.word,x+12,y);});
-  const sampleKey = Object.keys(S.graphNotes||{}).find(k=>S.graphNotes[k]&&S.graphNotes[k].trim().length>5);
-  if(sampleKey){
-    ctx.strokeStyle='#D3D1C7';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(60,445);ctx.lineTo(w-60,445);ctx.stroke();
-    ctx.fillStyle='#5F5E5A';ctx.font='400 11px DM Sans, sans-serif';ctx.textAlign='center';ctx.fillText('Student graph analysis sample:',w/2,465);
-    ctx.font='italic 400 12px Georgia, serif';ctx.fillStyle='#3C3489';
-    const sent='"'+S.graphNotes[sampleKey].trim().substring(0,110)+(S.graphNotes[sampleKey].length>110?'…':'"');
-    ctx.fillText(sent,w/2,485);
-  }
   const today=new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
   ctx.fillStyle='#888780';ctx.font='400 11px DM Sans, sans-serif';ctx.textAlign='center';ctx.fillText('Completed: '+today,w/2,540);
   ctx.strokeStyle='#2C2C2A';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(w/2-90,588);ctx.lineTo(w/2+90,588);ctx.stroke();
