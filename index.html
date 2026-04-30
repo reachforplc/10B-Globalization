@@ -592,6 +592,7 @@ canvas.chart { width: 100%; max-width: 700px; display: block; margin: 0 auto; }
 
       <div class="controls">
         <button class="btn-primary" onclick="checkGraphs()">Check my work</button>
+        <button class="btn-secondary" onclick="resetGraphs()">Reset</button>
         <span class="score-pill" id="graphScore"></span>
       </div>
       <div class="feedback" id="graphFeedback"></div>
@@ -1149,30 +1150,35 @@ const MC_QUESTIONS = {
 };
 
 function buildMCQuestions(){
-  Object.keys(MC_QUESTIONS).forEach(key => {
+  const keys = ['gdp_1','gdp_2','gdp_3a','gdp_3b','gdp_4','imm_1','imm_2','imm_3a','imm_3b','imm_4','wlth_1','wlth_2','wlth_3a','wlth_3b','wlth_4'];
+  keys.forEach(key => {
     const container = document.getElementById(key);
     if(!container) return;
     const q = MC_QUESTIONS[key];
     const saved = (S.graphNotes && S.graphNotes[key] !== undefined) ? S.graphNotes[key] : null;
     const isChecked = S.graphChecked || false;
+    const isWrong = isChecked && saved !== null && saved !== q.correct;
 
     q.options.forEach((opt, idx) => {
       const btn = document.createElement('button');
-      btn.className = 'mc-option';
       let cls = 'mc-option';
-      if(isChecked) {
-        if(idx === q.correct) cls += ' reveal-correct';
-        else if(saved === idx) cls += ' incorrect';
-      } else {
-        if(saved === idx) cls += ' selected';
+      if(isChecked && saved === idx && saved !== q.correct) {
+        cls += ' incorrect'; // only mark wrong answers, no green reveal
+      } else if(saved === idx) {
+        cls += ' selected';
       }
       btn.className = cls;
       btn.innerHTML = `<div class="mc-radio"></div><span>${opt}</span>`;
       btn.onclick = () => {
-        if(S.graphChecked) return;
+        if(S.graphChecked && saved === q.correct) return; // lock correct answers
         if(!S.graphNotes) S.graphNotes = {};
         S.graphNotes[key] = idx;
-        // re-render this group
+        // if re-answering after a check, clear checked state for this question only
+        if(S.graphChecked) {
+          S.graphChecked = false;
+          document.getElementById('graphFeedback').className = 'feedback';
+          document.getElementById('graphScore').style.display = 'none';
+        }
         container.querySelectorAll('.mc-option').forEach((b,i) => {
           b.className = 'mc-option' + (i === idx ? ' selected' : '');
         });
@@ -1204,12 +1210,12 @@ function checkGraphs(){
     return;
   }
 
-  // all answered — lock and reveal
+  // mark incorrect answers — students can still change them
   S.graphChecked = true;
-  // re-render all MC to show correct/incorrect
   document.querySelectorAll('.mc-options').forEach(c => c.innerHTML = '');
   buildMCQuestions();
 
+  const incorrect = keys.length - correct;
   pill.textContent = correct + ' / ' + keys.length + ' correct';
   pill.style.display = 'inline-block';
 
@@ -1220,9 +1226,22 @@ function checkGraphs(){
     S.done.graphs = true;
     document.getElementById('btn5to6').style.display = 'inline-block';
   } else {
-    fb.textContent = 'Keep going! Review the charts carefully and look at the titles, labels, and axes again.';
+    fb.textContent = incorrect + ' answer(s) are marked in red. Change your answer and check again.';
     fb.className = 'feedback show partial';
   }
+  autoSave();
+}
+
+function resetGraphs(){
+  const keys = ['gdp_1','gdp_2','gdp_3a','gdp_3b','gdp_4','imm_1','imm_2','imm_3a','imm_3b','imm_4','wlth_1','wlth_2','wlth_3a','wlth_3b','wlth_4'];
+  keys.forEach(k => { if(S.graphNotes) delete S.graphNotes[k]; });
+  S.graphChecked = false;
+  S.done.graphs = false;
+  document.getElementById('btn5to6').style.display = 'none';
+  document.getElementById('graphFeedback').className = 'feedback';
+  document.getElementById('graphScore').style.display = 'none';
+  document.querySelectorAll('.mc-options').forEach(c => c.innerHTML = '');
+  buildMCQuestions();
   autoSave();
 }
 
